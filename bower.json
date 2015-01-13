@@ -1,0 +1,29 @@
+{
+  "name": "ng-promise-button",
+  "version": "1.0",
+  "authors": [
+    "Lukas Dolezal <lukas@dolezalu.cz>"
+  ],
+  "moduleType": "globals",
+  "description": "Promise Button - calls function on click and shows progresss and result of returned promise",
+  "main": "./promise_button.js",
+  "keywords": [
+    "app",
+    "angular",
+    "button",
+    "promise",
+  ],
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.0",
+    "angular-resource": "~1.2.0"
+  }
+}
