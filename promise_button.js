@@ -6,7 +6,7 @@
  * @description promise-button attribute expect function call. when button is pressed, function is called and button displays progress and result of the promise.
  * # promiseButton
  */
-angular.module('ngPromiseButton')
+angular.module('ngPromiseButton', [])
   .directive('promiseButton', function ($compile, $timeout) {
     return {
       restrict: 'A',
