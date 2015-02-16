@@ -37,6 +37,10 @@ Add module to your application module dependencies
 
 ```angular.module('YourApp', [..., 'ngPromiseButton'])...```
 
+## Dependencies
+
+- Uses FontAwesome classes for feedback icons
+- uses CSS class '.spinner' for icons that should be animated (not included in this package)
 
 ## Usage
 
