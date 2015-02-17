@@ -4,6 +4,8 @@ Simple angular directive for button showing progress and result of promise (eg r
 
 ## What's this?
 
+DEMO: http://plnkr.co/edit/pHwqib?p=preview
+
 - Adds visual feedback of progress, success or failure to button that starts async process (API request, ...)
 - Disable button during processing to avoid double-requests by mistake clicking on button
 - Enables you to make button that waits X seconds to cancel mistake before actually commiting request
