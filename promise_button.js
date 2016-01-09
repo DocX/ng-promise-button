@@ -6,7 +6,7 @@
  * @description promise-button attribute expect function call. when button is pressed, function is called and button displays progress and result of the promise.
  * # promiseButton
  * 
- * Addded functionality:
+ * Added functionality:
  *  handle ngResource promise and null/empty promises
  *  attribute to submit form - if a promise is supplied the button turns into type="submit"
  *  attributes for button success/error class - defaults to btn-success/btn-danger
