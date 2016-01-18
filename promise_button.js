@@ -37,7 +37,7 @@ angular.module('ngPromiseButton', [])
         promiseRevert: '@',	// revert attribute
         promiseSuccessClass: '@',	// success class attribute
         promiseErrorClass: '@',	// error class attribute
-        promiseSubmit: '@',	 // submit form attribute
+        promiseSubmit: '=',	 // submit form
       },
       link: function postLink(scope, element, attrs) {
         element.attr('ng-click', 'onClick()');
@@ -45,24 +45,21 @@ angular.module('ngPromiseButton', [])
         element.find('[ng-transclude]').removeAttr('ng-transclude');		
 
         // store whether to revert
-        var revert= scope.promiseRevert == 'none' ? false : true
+        var revert= scope.promiseRevert == 'none' ? false : true;
         
         scope.state = 'idle';
         scope.labelPending = scope.promisePending || '';
         scope.labelSuccess = scope.promiseSuccess || '';
         scope.labelError = scope.promiseError || 'Failed';
         scope.revert = Number(scope.promiseRevert) || 4000;	// revert attribute
-        scope.successClass = scope.promiseSuccessClass != null || scope.promiseSuccessClass == "none" ? scope.promiseSuccessClass : 'btn-success';	// success class attribute
-        scope.errorClass = scope.promiseErrorClass != null || scope.promiseErrorClass == "none" ? scope.promiseErrorClass : 'btn-danger';	// success class attribute
+        scope.successClass = scope.promiseSuccessClass !== null || scope.promiseSuccessClass == "none" ? scope.promiseSuccessClass : 'btn-success';	// success class attribute
+        scope.errorClass = scope.promiseErrorClass !== null || scope.promiseErrorClass == "none" ? scope.promiseErrorClass : 'btn-danger';	// success class attribute
         
         var ceaseTimer = null;
 		
-    		// only show cancel if there's cease-period attribute
-    		var ceaseButton = scope.promiseCeasePeriod ? true : false;
-    		
-    		// change button to type="submit" if there's submit attribute
-    		var submit= scope.promiseSubmit == 'true' ? true: false;
-        
+        // only show cancel if there's cease-period attribute
+        var ceaseButton = scope.promiseCeasePeriod ? true : false;
+
         var intervalTick = function() {
           if (ceaseButton && scope.state != 'ceaseInterval') {
             return;
@@ -74,7 +71,7 @@ angular.module('ngPromiseButton', [])
           } else {
             ceaseTimer = $timeout(intervalTick, 1000);
           }
-        }
+        };
 
         scope.onClick = function() {
           if (scope.state == 'progress') {
@@ -87,13 +84,13 @@ angular.module('ngPromiseButton', [])
             return;
           }
 
-    		  if(ceaseButton){
-    			scope.state = 'ceaseInterval';
-    		  }
-    		  scope.ceaseIntervalSec = Number(scope.promiseCeasePeriod) || 0;
-    		  scope.ceaseIntervalSec += 1;
-    		  intervalTick(); 
-        }
+		if(ceaseButton){
+		    scope.state = 'ceaseInterval';
+		}
+		scope.ceaseIntervalSec = Number(scope.promiseCeasePeriod) || 0;
+		scope.ceaseIntervalSec += 1;
+		intervalTick(); 
+        };
 
         scope.start = function() {
           if (scope.state == 'progress') {
@@ -104,7 +101,13 @@ angular.module('ngPromiseButton', [])
     		  if(promise){
     			
     			promise = promise.$promise ? promise.$promise : promise; // handle ngResource
-    			if(submit){	element.attr('type', 'submit'); }
+                
+    			if(scope.promiseSubmit){
+	                  var formEl= element[0].form;
+	                  element.attr('type', 'submit'); // change button to type "submit"
+	                  angular.element(formEl).triggerHandler('submit'); // trigger submit event
+	                  scope.promiseSubmit.$submitted= true ; // update submitted
+	                }
     			
     			scope.state = 'progress';
     			
@@ -147,9 +150,9 @@ angular.module('ngPromiseButton', [])
           				if(!originalClass.error)  element.removeClass(scope.errorClass);
         			  }, scope.revert);
       			  }
-      			})
+      			});
     		  }
-        }
+        };
         $compile(element)(scope);
       }
     };
