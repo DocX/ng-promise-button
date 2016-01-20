@@ -52,8 +52,8 @@ angular.module('ngPromiseButton', [])
         scope.labelSuccess = scope.promiseSuccess || '';
         scope.labelError = scope.promiseError || 'Failed';
         scope.revert = Number(scope.promiseRevert) || 4000;	// revert attribute
-        scope.successClass = scope.promiseSuccessClass !== null || scope.promiseSuccessClass == "none" ? scope.promiseSuccessClass : 'btn-success';	// success class attribute
-        scope.errorClass = scope.promiseErrorClass !== null || scope.promiseErrorClass == "none" ? scope.promiseErrorClass : 'btn-danger';	// success class attribute
+        scope.successClass = scope.promiseSuccessClass != null || scope.promiseSuccessClass == "none" ? scope.promiseSuccessClass : 'btn-success';	// success class attribute
+        scope.errorClass = scope.promiseErrorClass != null || scope.promiseErrorClass == "none" ? scope.promiseErrorClass : 'btn-danger';	// success class attribute
         
         var ceaseTimer = null;
 		
