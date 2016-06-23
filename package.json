@@ -1,0 +1,11 @@
+{
+  "name": "ng-promise-button",
+  "version": "0.1",
+  "dependencies": {},
+  "main": "promise_button.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DocX/ng-promise-button.git"
+  },
+  "devDependencies": {}
+}
