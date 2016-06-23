@@ -1,6 +1,6 @@
 {
   "name": "ng-promise-button",
-  "version": "0.1",
+  "version": "0.1.0",
   "dependencies": {},
   "main": "promise_button.js",
   "repository": {
