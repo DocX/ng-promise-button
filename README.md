@@ -2,6 +2,11 @@
 
 Simple angular directive for button showing progress and result of promise (eg resource request call)
 
+This is a fork with added functionality.
+
+FORK DEMO: http://embed.plnkr.co/WRaLC2/
+
+
 ## What's this?
 
 DEMO: http://plnkr.co/edit/pHwqib?p=preview
